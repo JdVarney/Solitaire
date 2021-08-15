@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Deck {
-    public var cards = [Card]()
+    public var Cards = [Card]()
     private var itemColor = CardColor.black
     private var icon = SuitIcon.clubs
     
@@ -31,24 +31,32 @@ public struct Deck {
                     self.icon = SuitIcon.clubs
                 }
                 
-                let newCard = Card.init(rank: itemRank, suit: itemSuit,
-                                        color: itemColor, suitIcon: icon)
-                debugPrint("Debug:Deck: " + newCard.description)
+                let newCard = Card.init(
+                                        rank: itemRank,
+                                        suit: itemSuit,
+                                        color: itemColor,
+                                        suitIcon: icon
+                                        )
                 
-                cards.append(newCard)
+                debugPrint("Deck: " + newCard.description)
+                
+                Cards.append(newCard)
             }
         }
-        cards.shuffle()
-        return
+        Cards.shuffle()
+    return
     }
     
-    public mutating func deal(count:Int) -> Array<Card> {
-         guard count <= cards.count else {
+    /// Todo: Needs array as a parm
+    
+    public mutating func deal(count:Int) -> [Card] {
+         guard count <= Cards.count else {
             debugPrint("Sufficient Cards are not avaialble to deal: \(count).")
             return []
         }
-        var newHand = Array<Card> ()
-        newHand = Array(cards.prefix(count))
+        
+       let newHand = Array(Cards.prefix(count))
+        
         return newHand
     }
 }

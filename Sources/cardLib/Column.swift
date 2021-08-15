@@ -7,9 +7,10 @@
 
 import Foundation
  
-public struct Column {
-    public var cards = ArraySlice<Card>()
+public struct Column: Hashable {
+    public var cards = Array<Card>()
     public var colIndex: Int
     
+  
     
 }

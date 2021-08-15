@@ -9,7 +9,7 @@ import Foundation
 
 /// Pile for discarded cards
 public struct Discard {
-    var cards = [Card]()
+    public var cards = [Card]()
     }
 
 
