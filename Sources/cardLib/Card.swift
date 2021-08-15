@@ -21,7 +21,7 @@ public struct Card: Klondike, CustomStringConvertible, Identifiable {
     public init(rank:Rank, suit:Suit, color:CardColor, suitIcon: SuitIcon) {
         self.rank = rank
         switch rank {
-            case .Ace: description = "A"
+            case .ace: description = "A"
             case .two: description = "2"
             case .three: description = "3"
             case .four: description = "4"
