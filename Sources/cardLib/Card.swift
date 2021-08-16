@@ -13,7 +13,7 @@ public struct Card: Klondike, CustomStringConvertible, Identifiable {
     var rank: Rank
     var suit: Suit
     var color: CardColor
-    var faceShowing = false
+    public var faceShowing = false
     var encumbered = true
     var hashCalc: Int
     var suitIcon: SuitIcon
@@ -44,7 +44,7 @@ public struct Card: Klondike, CustomStringConvertible, Identifiable {
         hashCalc = self.rank.rawValue + self.suit.rawValue * 10 +
             self.color.rawValue * 100
         
-        assert(self.encumbered && !self.faceShowing)
+//        assert(self.encumbered && !self.faceShowing)
     }
     
     public func toString() -> Void {
