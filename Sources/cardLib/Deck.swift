@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Deck {
-    public var Cards = [Card]()
+    private var Cards = [Card]()
     private var itemColor = CardColor.black
     private var icon = SuitIcon.clubs
     
@@ -51,11 +51,11 @@ public struct Deck {
     
     public mutating func deal(count:Int) -> [Card] {
          guard count <= Cards.count else {
-            debugPrint("Sufficient Cards are not avaialble to deal: \(count).")
+            debugPrint("Sufficient Cards are not avaialble for deal: \(count).")
             return []
         }
         
-       let newHand = Array(Cards.prefix(count))
+        let newHand = Array(Cards.prefix(count))
         
         return newHand
     }
