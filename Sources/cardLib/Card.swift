@@ -6,22 +6,25 @@
 //
 
 import Foundation
+import UIKit
 
 public struct Card: Klondike, CustomStringConvertible, Identifiable {
     public var description: String
     public var id = UUID()
-    var rank: Rank
-    var suit: Suit
-    var color: CardColor
     public var faceShowing = false
-    var encumbered = true
-    var hashCalc: Int
-    var suitIcon: SuitIcon
+    public var encumbered = true
     
+    private(set) var rank: Rank
+    private(set) var suit: Suit
+    private(set) var color: CardColor
+    private(set) var hashCalc: Int
+    private(set) var suitIcon: SuitIcon
+    public var cardImage: UIImage
+
     public init(rank:Rank, suit:Suit, color:CardColor, suitIcon: SuitIcon) {
         self.rank = rank
         switch rank {
-            case .ace: description = "A"
+            case .ace: description = "1"
             case .two: description = "2"
             case .three: description = "3"
             case .four: description = "4"
@@ -30,10 +33,10 @@ public struct Card: Klondike, CustomStringConvertible, Identifiable {
             case .seven: description = "7"
             case .eight: description = "8"
             case .nine: description = "9"
-            case .ten: description = "T"
-            case .jack: description =  "J"
-            case .queen: description = "Q"
-            case .king: description = "K"
+            case .ten: description = "10"
+            case .jack: description =  "11"
+            case .queen: description = "12"
+            case .king: description = "13"
         }
         self.suitIcon = suitIcon
         self.description += suitIcon.rawValue
@@ -41,10 +44,13 @@ public struct Card: Klondike, CustomStringConvertible, Identifiable {
         self.suit = suit
         self.color = color
         
-        hashCalc = self.rank.rawValue + self.suit.rawValue * 10 +
+        hashCalc = self.rank.rawValue +
+            self.suit.rawValue * 10 +
             self.color.rawValue * 100
-        
-//        assert(self.encumbered && !self.faceShowing)
+                
+        self.cardImage = UIImage.init(imageLiteralResourceName:
+                                    suit.simpleDescription() +
+                                    rank.simpleDescription())
     }
     
     public func toString() -> Void {
