@@ -32,11 +32,11 @@ public struct Deck {
                 }
                 
                 let newCard = Card.init(
-                                        rank: itemRank,
-                                        suit: itemSuit,
-                                        color: itemColor,
-                                        suitIcon: icon
-                                        )
+                    rank: itemRank,
+                    suit: itemSuit,
+                    color: itemColor,
+                    suitIcon: icon
+                    )
                 
                 debugPrint("Deck: " + newCard.description)
                 
