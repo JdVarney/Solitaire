@@ -9,17 +9,17 @@ import Foundation
 import UIKit
 
 public struct Card: Klondike, CustomStringConvertible, Identifiable {
-    public var description: String
-    public var id = UUID()
-    public var faceShowing = false
-    public var encumbered = true
-    
-    private(set) var rank: Rank
-    private(set) var suit: Suit
-    private(set) var color: CardColor
     private(set) var hashCalc: Int
     private(set) var suitIcon: SuitIcon
+
+    public var description: String
     public var cardImage: UIImage
+    public var faceShowing = false
+    public var encumbered = true
+    public var id = UUID()
+    public var rank: Rank
+    public var suit: Suit
+    public var color: CardColor
 
     public init(rank:Rank, suit:Suit, color:CardColor, suitIcon: SuitIcon) {
         self.rank = rank
@@ -58,7 +58,7 @@ public struct Card: Klondike, CustomStringConvertible, Identifiable {
         return
     }
     
-    public static func compare (lhs: Card, rhs:Card) -> Bool {
+    public static func cardCompare(lhs: Card, rhs:Card) -> Bool {
         switch lhs.color {
         case .red : return rhs.color == .black &&
             lhs.rank.rawValue == rhs.rank.rawValue + 1
@@ -69,7 +69,7 @@ public struct Card: Klondike, CustomStringConvertible, Identifiable {
 }
 
 public protocol Klondike {
-    static func compare (lhs: Card, rhs: Card) -> Bool
+    static func cardCompare(lhs: Card, rhs: Card) -> Bool
 }
 
 extension Card: Hashable, Equatable {
