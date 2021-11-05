@@ -8,11 +8,11 @@
 import Foundation
 
 public struct Deck {
-    private var Cards = [Card]()
+    private var cards = [Card]()
     private var itemColor = CardColor.black
     private var icon = SuitIcon.clubs
     
-    public init () {                               // Create the cards of a deck
+    public init () {                        // Create the cards of a deck
         for itemRank in Rank.allCases {
             for itemSuit in Suit.allCases {
                 
@@ -40,22 +40,20 @@ public struct Deck {
                 
                 debugPrint("Deck: " + newCard.description)
                 
-                Cards.append(newCard)
+                cards.append(newCard)
             }
         }
-        Cards.shuffle()
+        cards.shuffle()
     return
     }
-    
-    /// Todo: Needs array as a parm
-    
+        
     public mutating func deal(count:Int) -> [Card] {
-         guard count <= Cards.count else {
+         guard count <= cards.count else {
             debugPrint("Sufficient Cards are not avaialble for deal: \(count).")
             return []
         }
         
-        let newHand = Array(Cards.prefix(count))
+        let newHand = Array(cards.prefix(count))
         
         return newHand
     }
